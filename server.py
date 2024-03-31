@@ -1,5 +1,4 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
 
@@ -19,6 +18,10 @@ def contact():
 def projects():
     return render_template('projects.html')
 
+@app.route('/download')
+def download_resume():
+    return send_from_directory('./resume', 'resume.pdf')
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=81)
+    app.run(host='0.0.0.0', port=81, debug=True)

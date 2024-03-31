@@ -11732,3 +11732,26 @@ html {
     left: -2vw;
   }
 }
+.custom-card {
+    border: 1px solid #3498db; /* Border color */
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.custom-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: scale(1.03);
+    border-color: #2980b9; /* Updated border color on hover */
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 2s steps(20) infinite;
+}
+
