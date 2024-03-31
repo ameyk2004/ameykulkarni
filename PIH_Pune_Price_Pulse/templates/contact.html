@@ -1,0 +1,58 @@
+{% include "header.html" %}
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('https://admin.purplerealtors.in/admin/upload/Blog/1495596094z143.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Contact Us</h1>
+                            <span class="subheading">Have questions? We have answers.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Want to get in touch? Fill out the form below to send Us a message and We will get back to you as soon as possible!</p>
+                        <div class="my-5">
+                           <form action="{{ url_for('pricepulse.contact') }}" method="post">
+                               <p>
+                                   Name :
+                               </p>
+                               <p>
+                                   <input type="text" name="name" style="border : 1px solid black;  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);">
+                               </p>
+                               <p>
+                                   Email :
+                               </p>
+                               <p>
+                                   <input type="email" name="email" required style="border : 1px solid black;  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);">
+                               </p>
+                               <p>
+                                   Phone Number :
+                               </p>
+                               <p>
+                                   <input type="text" name="phone_num" minlength="10" required style="border : 1px solid black;  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);">
+                               </p>
+                               <p>
+                                   Message :
+                               </p>
+                               <p>
+                                   <input type="text" name="message" minlength="10" placeholder="Type your message here" required style="border : 1px solid black;  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.3);">
+                               </p>
+                               <p>
+                                   <input type="submit" name="Submit">
+                               </p>
+                           </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% include "footer.html" %}

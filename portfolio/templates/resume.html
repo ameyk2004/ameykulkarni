@@ -22,13 +22,13 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="{{ url_for('home') }}"><span class="fw-bolder text-primary">Portfolio</span></a>
+                    <a class="navbar-brand" href="{{ url_for('portfolio.home') }}"><span class="fw-bolder text-primary">Portfolio</span></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                             <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('resume') }}">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
+                             <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.home') }}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.resume') }}">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.projects') }}">Projects</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                         <section>
                             <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
     <h2 class="text-primary fw-bolder mb-3 mb-md-0">Hackathons</h2>
-    <a class="btn btn-primary px-4 py-3 mt-3 mt-md-0" href="{{ url_for('download_resume') }}">
+    <a class="btn btn-primary px-4 py-3 mt-3 mt-md-0" href="{{ url_for('portfolio.download_resume') }}">
         <div class="d-inline-block bi bi-download me-2"></div>
         Download Resume
     </a>

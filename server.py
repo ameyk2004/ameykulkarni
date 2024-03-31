@@ -1,24 +1,16 @@
-from flask import Flask, render_template, send_from_directory, Blueprint
+from flask import Flask, render_template, send_from_directory, redirect
+from PIH_Pune_Price_Pulse import pricepulse
+from portfolio import portfolio
+import PIH_Pune_Price_Pulse
 
-pricepulse = Blueprint("pricepulse", __name__, static_folder="static",  template_folder="templates")
+app = Flask(__name__)
+app.register_blueprint(pricepulse.pricepulse, url_prefix="/price-pulse")
+app.register_blueprint(portfolio.portfolio, url_prefix="/portfolio")
 
-
-@pricepulse.route('/')
+@app.route('/')
 def home():
-    return render_template('index.html')
+    return redirect('/portfolio')
 
-@pricepulse.route('/resume')
-def resume():
-    return render_template('resume.html')
 
-@pricepulse.route('/contact')
-def contact():
-    return render_template('contact.html')
-
-@pricepulse.route('/projects')
-def projects():
-    return render_template('projects.html')
-
-@pricepulse.route('/download')
-def download_resume():
-    return send_from_directory('./resume', 'resume.pdf')
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80, debug=True)

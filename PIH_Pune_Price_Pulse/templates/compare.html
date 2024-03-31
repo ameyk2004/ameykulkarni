@@ -1,0 +1,137 @@
+{% include "header.html" %}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style type="text/css">
+    </style>
+<style>
+    table {
+        width: 100%;
+        text-align: center;
+
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    th {
+        background-color: #f3f3f3;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.05);
+
+    }
+</style>
+
+    <style>
+        table {
+            width: 100%;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        th {
+            background-color: #f3f3f3;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<header class="masthead" style="background-image: url('https://www.learning-mind.com/wp-content/uploads/2019/10/freedom-of-choice-confusion.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Comparisons</h1>
+<!--                            <span class="subheading">Have questions? I have answers.</span>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+<br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-12">
+                    <h3 style="text-align: center;">Hinjewadi</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Hinjewadi'] }}</td>
+            </tr>
+
+            <tr>
+                <th class="col-12">
+                    <h3>Kharadi</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Kharadi'] }}</td>
+            </tr>
+
+            <tr>
+                <th class="col-12">
+                    <h3>Baner</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Baner'] }}</td>
+            </tr>
+
+            <tr>
+                <th class="col-12">
+                    <h3>Hadapsar</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Hadapsar'] }}</td>
+            </tr>
+
+            <tr>
+                <th class="col-12">
+                    <h3>Wagholi</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Wagholi'] }}</td>
+            </tr>
+
+            <tr>
+                <th class="col-12">
+                    <h3>Wakad</h3>
+                </th>
+            </tr>
+            <tr>
+                <td class="col-12">₹ {{ prices['Wakad'] }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+</div>

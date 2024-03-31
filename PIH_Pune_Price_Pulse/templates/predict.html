@@ -1,0 +1,89 @@
+{% include "header.html" %}
+
+<!-- Page Header-->
+<header
+  class="masthead"
+  style="background-image: url('https://wallpapers.com/images/hd/beautiful-house-pictures-gi9u23e95gi8iu2e.jpg')"
+>
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Price Prediction</h1>
+          <span class="subheading">Predict the price of house according to your choice.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<form action="/area/{{ num }}" method="post">
+                               <table cellspacing="100">
+                                    <tr>
+                                      <td>
+                                          <select class="form-select" name="area">
+                                            <option selected value="Hinjewadi"></option>
+                                            {% for i in range(6) %}
+                                                    <option value="{{ area_data[i][0] }}">{{ area_data[i][0] }}</option>
+
+                                            {% endfor %}
+                                        </select>
+                                      </td>
+                                      <td>
+                                        <input type="text" placeholder="No. of Bedrooms" name = "Bedrooms" required>
+                                      </td>
+                                      <td>
+                                            <input type="text" placeholder="Deposit Amt." name = "Amount" required>
+                                      </td>
+                                    </tr>
+
+                                   <br><br>
+                                  <tr>
+                                      <td>
+                                        <div class="form-check form-check-inline">
+                                          <input checked class="form-check-input" type="radio" name="furniture" id="inlineRadio1" value="Furnished">
+                                          <label class="form-check-label" for="inlineRadio1">Furnished</label>
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="furniture" id="inlineRadio2" value="Semi Furnished">
+                                          <label class="form-check-label" for="inlineRadio2">Semi Furnished</label>
+                                        </div>
+                                      </td>
+
+                                      <td>
+                                        <div class="form-check form-check-inline">
+                                          <input class="form-check-input" type="radio" name="furniture" id="inlineRadio3" value="Not Furnished">
+                                          <label class="form-check-label" for="inlineRadio3">Not Furnished</label>
+                                        </div>
+                                      </td>
+                                    </tr>
+
+                                   <tr>
+                                     <td>
+                                        <input type="text" placeholder="Floor Number" name="Floor" required >
+                                      </td>
+
+                                       <td>
+                                        <input type="text" placeholder="Parking space" name="Parking" required>
+                                      </td>
+
+                                       <td>
+                                        <input type="text" placeholder="Property Age" name = "Age" required>
+                                      </td>
+                                   </tr>
+                                   <tr>
+                                       <td>
+                                        <input type="text" placeholder="Area in Sq.ft" name = "SquareFeet" required>
+                                      </td>
+                                   </tr>
+
+                                  </table>
+
+                                <input type="submit"  name = "Submit" value="Submit">
+
+                           </form>
+
+{% include "footer.html" %}

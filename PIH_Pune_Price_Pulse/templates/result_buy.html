@@ -1,0 +1,93 @@
+
+{% include "header.html" %}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">-->
+    <style type="text/css">
+    </style>
+</head>
+<header class="masthead" style="background-image: url('{{ area[1] }}')" data-aos="fade-in">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7" data-aos="fade">
+                <div class="page-heading">
+                    <h1 data-aos="fade">{{ area[0] }}</h1>
+                    <span class="subheading" data-aos="fade">Predicted Price According To Your Result</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <br><br>
+<h1>Choice Summary</h1>
+                    <hr>
+                    <table>
+                        <tr data-aos="fade-up" data-aos-delay="0">
+                            <td>
+                                <label><b>No. of Bedrooms : </b>{{ form['BHK'] }} BHK</label>
+                            </td>
+
+                            <td>
+
+                                {% if form['Unfurnished'] == 1 %}
+                                <label><b>Furnishing : </b>Not Furnished</label>
+                                {% endif %}
+
+                                {% if form['Semi-Furnished'] == 1 %}
+                                <label><b>Furnishing : </b>Semi Furnished</label>
+                                {% endif %}
+
+                                {% if form['Furnished'] == 1 %}
+                                <label><b>Furnishing : </b>Fully Furnished</label>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr data-aos="fade-up" data-aos-delay="200">
+<!--                            <td>-->
+<!--                                <label><b>Floor No : </b>{{ form['floor'] }}</label>-->
+<!--                            </td>-->
+                            <td>
+                                <label><b>Area : </b>{{ form['Area_sqft'] }}</label>
+                            </td>
+
+                        </tr>
+
+                        <tr data-aos="fade-up" data-aos-delay="400">
+                            <td colspan="3">
+                                <h3>Buy Price : ₹ {{ price }} {{ post_fix }}</h3>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <br>
+                    <br>
+
+<hr>
+
+                    <div class="d-grid gap-2 col-6 mx-auto">
+
+                        <button class="btn btn-outline-primary" type="button" style="border-radius : 12px;"><a href="/compare_buy">View Comparisons for Purchase</a></button>
+                            <br>
+                            <br>
+                                </div>
+
+                <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                    <script>
+                        AOS.init({
+                            duration: 1000, // Animation duration in milliseconds
+                            delay: 200,      // Delay between animations in milliseconds
+                          });
+
+                    </script>
+                </div>
+            </div>
+        </main>
+
+{% include "footer.html" %}
