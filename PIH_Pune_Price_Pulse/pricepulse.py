@@ -254,8 +254,6 @@ def area_buy(num):
             price_buy = (price_buy / 100)
             post_fix = "Crore"
 
-        print((prices_buy[0])['Hinjewadi'])
-
         send_mail(form_buy['email'], f"Buy price for {current_area}",
                   message=f"Choice Summary\nNo. of Bedrooms : {form_buy['BHK']}\nArea : {form_buy['Area_sqft']}\nRent : ₹{price_buy}\n\nThank you visit us again")
         return render_template('result_buy.html', area=area, area_data=area_data, price=price_buy, num=num, form_data=form_data_buy,
@@ -337,6 +335,94 @@ def rentApi():
         else:
             return jsonify({'success': False, 'error': 'Method not allowed'}), 405
 
+@pricepulse.route('/buy/api', methods = ['POST'])
+def buyApi():
+    if request.method == 'POST':
+        data = request.json
+
+        current_area = data["area_name"]
+        email = data["email"]
+
+        if data:
+            form_data = {
+                'Unfurnished': int(((data['furniture'])[4])),
+                'Semi-Furnished': int(((data['furniture'])[2])),
+                'Furnished': int(((data['furniture'])[0])),
+                'Area_sqft': int(data['SquareFeet']),
+                'BHK': int(data['Bedrooms']),
+            }
+
+            price_buy = 0
+            cwd = os.getcwd()
+            csv_path = os.path.join(cwd, "PIH_Pune_Price_Pulse", "Data", "test_buy.csv")
+            with open(csv_path, 'w', newline='') as csvfile:
+
+                fieldnames = form_data.keys()
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                writer.writeheader()
+
+                writer.writerow(form_data)
+            test = pd.read_csv(csv_path)
+
+            if (current_area == "Hinjewadi"):
+                price_buy = int((hinjewadi_purchase.predict(test))[0])
+
+            elif (current_area == "Kharadi"):
+                price_buy = int((kharadi_purchase.predict(test))[0])
+
+            elif (current_area == "Baner"):
+                price_buy = int((baner_purchase.predict(test))[0])
+
+            elif (current_area == "Hadapsar"):
+                price_buy = int((hadapsar_purchase.predict(test))[0])
+
+            elif (current_area == "Wagholi"):
+                price_buy = int((wagholi_purchase.predict(test))[0])
+
+            elif (current_area == "Wakad"):
+                price_buy = int((wakad_purchase.predict(test))[0])
+
+            prices_buy = [
+
+                {
+                    "Hinjewadi": calc_buy_val(int((hinjewadi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((hinjewadi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Kharadi": calc_buy_val(int((kharadi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((kharadi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Baner": calc_buy_val(int((baner_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((baner_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Hadapsar": calc_buy_val(int((hadapsar_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((hadapsar_purchase.predict(test))[0]))
+                },
+                {
+                    "Wagholi": calc_buy_val(int((wagholi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((wagholi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Wakad": calc_buy_val(int((wakad_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((wakad_purchase.predict(test))[0]))
+                }
+            ]
+            post_fix = "Lakhs"
+            if price_buy > 100:
+                price_buy = (price_buy / 100)
+                post_fix = "Crore"
+
+            send_mail(email, f"Rent price for {current_area}",
+                      message=f"Choice Summary\nNo. of Bedrooms : {form_data['BHK']}\nArea : {form_data['Area_sqft']}\nPrice : ₹{price_buy} {post_fix} \n\nThank you visit us again")
+
+            return jsonify({'success': True, 'price': f'{price_buy}', "post_fix" : post_fix })
 
 def calc_post_fix(value):
     post_fix = "Lakhs"

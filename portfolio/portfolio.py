@@ -1,4 +1,5 @@
 from flask import Flask, render_template, send_from_directory, Blueprint, url_for
+import os
 
 portfolio = Blueprint("portfolio", __name__,static_folder="static", template_folder="templates")
 @portfolio.route('/')
@@ -19,4 +20,5 @@ def projects():
 
 @portfolio.route('/download')
 def download_resume():
-    return send_from_directory('static', 'resume/resume.pdf')
+    cwd = os.getcwd()
+    return send_from_directory(f'{cwd}/portfolio/static/resume', 'Amey Kulkarni - Resume.pdf')

@@ -11770,3 +11770,18 @@ card {
         order: 1; /* Swap the order of the content and image on mobile */
     }
 }
+<style>
+    .card {
+        height: 400px; /* Set height of the card */
+    }
+    .card .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; /* Align content to the top */
+    }
+    .card img {
+        max-width: 40%;
+        height: auto;
+        align-self: center; /* Center the image horizontally */
+    }

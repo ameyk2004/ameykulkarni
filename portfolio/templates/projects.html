@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
+        <title>Amey Kulkarni - Projects</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
         <!-- Custom Google font-->
@@ -22,13 +22,12 @@
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Portfolio</span></a>
+                    <a class="navbar-brand" href="{{ url_for('portfolio.home') }}"><span class="fw-bolder text-primary">Portfolio</span></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                              <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.home') }}">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.resume') }}">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.contact') }}">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('portfolio.projects') }}">Projects</a></li>
                         </ul>
                     </div>
@@ -48,14 +47,14 @@
     <div class="card-body p-0">
         <div class="d-flex flex-column flex-md-row align-items-md-center">
             <div class="p-5">
-                <h2 class="fw-bolder">Project Name 1</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
+                <h2 class="fw-bolder">Price Pulse</h2>
+                <p>
+                    "Price Pulse" employs advanced web scraping techniques and Jinja templates to deliver accurate predictions of rental and housing prices in Pune. By harnessing real-time data, this user-friendly web application provides valuable insights into the dynamic housing market, enabling users to make informed decisions regarding renting or investing in properties in Pune.</p>
             </div>
-            <img class="img-fluid mt-3 mt-md-0" src="./static/assets/image-900x1200.jpg" alt="..."  width="400"/>
+            <img class="img-fluid mt-3 mt-md-0" src="./static/assets/pricePulse.png" alt="Price Pulse Image"/>
         </div>
     </div>
-</div>
-                            <!-- Project Card 2-->
+</div>                <!-- Project Card 2-->
                             <div class="card overflow-hidden shadow rounded-4 border-0">
                                 <div class="card-body p-0">
                                     <div class="d-flex align-items-center">
@@ -69,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div></div>
             </section>
             <!-- Call to action section-->
             <section class="py-5 bg-gradient-primary-to-secondary text-white">
