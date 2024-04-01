@@ -281,6 +281,9 @@ def rentApi():
         if(request.method == 'POST'):
             data = request.json
 
+            current_area = data["area_name"]
+            email = data["email"]
+
             if data:
                 form_data = {
                     'Unfurnished': int(((data['furniture'])[4])),
@@ -307,7 +310,26 @@ def rentApi():
                     writer.writerow(form_data)
                 test = pd.read_csv(csv_path)
 
-                price = int((hinjewadi_model.predict(test))[0])
+                if (current_area == "Hinjewadi"):
+                    price = int((hinjewadi_model.predict(test))[0])
+
+                elif (current_area == "Kharadi"):
+                    price = int((kharadi_model.predict(test))[0])
+
+                elif (current_area == "Baner"):
+                    price = int((baner_model.predict(test))[0])
+
+                elif (current_area == "Hadapsar"):
+                    price = int((hadapsar_model.predict(test))[0])
+
+                elif (current_area == "Wagholi"):
+                    price = int((wagholi_model.predict(test))[0])
+
+                elif (current_area == "Wakad"):
+                    price = int((wakad_model.predict(test))[0])
+
+                send_mail(email, f"Rent price for {current_area}",
+                          message=f"Choice Summary\nNo. of Bedrooms : {form_data['BHK']}\nArea : {form_data['Area_sqft']}\nRent : ₹{price}\n\nThank you visit us again")
 
                 return jsonify({'success': True, 'price': f'{price}'})
             else:
