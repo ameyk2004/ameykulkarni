@@ -13,7 +13,7 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the relative path to the CSV file
-csv_file_path = os.path.join(current_dir, 'Data', 'Rent data', 'kharadi_final.csv')
+csv_file_path = os.path.join(current_dir, 'Data', 'Rent Data', 'kharadi_final.csv')
 dataset = pd.read_csv(csv_file_path)
 
 rent = dataset.pop("Rent")
@@ -23,13 +23,10 @@ rent = dataset.pop("Rent")
 kharadi_model = RandomForestRegressor(n_estimators=400, max_depth=16, random_state=10, max_features='sqrt', min_samples_split=4, min_samples_leaf=2, bootstrap=True)
 
 kharadi_model.fit(dataset.drop(["Furnishing"],axis = 1),rent)
-import os
 
 # Get the directory of the current Python script
 current_dir = os.path.dirname(os.path.abspath(__file__))
-
-# Construct the relative path to the CSV file
 csv_file_path = os.path.join(current_dir, 'Data', 'Rent Data', 'test.csv')
-test = pd.read_csv(csv_file_path)
+test = pd.read_csv(csv_file_path )
 
 # print(kharadi_model.predict(test))
