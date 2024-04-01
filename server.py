@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, redirect
+from flask import Flask, render_template, send_from_directory, redirect, jsonify
 from PIH_Pune_Price_Pulse import pricepulse
 from portfolio import portfolio
 import PIH_Pune_Price_Pulse
@@ -10,6 +10,10 @@ app.register_blueprint(portfolio.portfolio, url_prefix="/portfolio")
 @app.route('/')
 def home():
     return redirect('/portfolio')
+
+@app.route('/keep-alive')
+def keep_alive():
+    return "Server is alive"
 
 
 if __name__ == '__main__':
