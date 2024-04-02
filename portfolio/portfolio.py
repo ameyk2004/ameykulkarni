@@ -18,6 +18,10 @@ def contact():
 def projects():
     return render_template('projects.html')
 
+@portfolio.route('/scalp-smart')
+def scalp_smart():
+    return render_template('scalpsmart.html')
+
 @portfolio.route('/download')
 def download_resume():
     cwd = os.getcwd()

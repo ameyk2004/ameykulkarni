@@ -219,7 +219,6 @@ def area_buy(num):
 
 
         prices_buy = [
-
             {
                 "Hinjewadi": calc_buy_val(int((hinjewadi_purchase.predict(test))[0])),
                 "post_fix" : calc_post_fix(int((hinjewadi_purchase.predict(test))[0]))
@@ -423,6 +422,109 @@ def buyApi():
                       message=f"Choice Summary\nNo. of Bedrooms : {form_data['BHK']}\nArea : {form_data['Area_sqft']}\nPrice : ₹{price_buy} {post_fix} \n\nThank you visit us again")
 
             return jsonify({'success': True, 'price': f'{price_buy}', "post_fix" : post_fix })
+
+from flask import request, jsonify
+
+@pricepulse.route('/all-rent-prices', methods=['POST'])
+def all_rent_prices():
+    if request.method == 'POST':
+        data = request.json
+
+        if data:
+            current_area = data.get("area_name")
+            email = data.get("email")
+
+            form_data = {
+                'Unfurnished': int(((data['furniture'])[4])),
+                'Semi-Furnished': int(((data['furniture'])[2])),
+                'Furnished': int(((data['furniture'])[0])),
+                'Area_sqft': int(data['SquareFeet']),
+                'BHK': int(data['Bedrooms']),
+            }
+
+
+            prices = {
+                "Hinjewadi": int(hinjewadi_model.predict(form_data)[0]),
+                "Kharadi": int(kharadi_model.predict(form_data)[0]),
+                "Baner": int(baner_model.predict(form_data)[0]),
+                "Hadapsar": int(hadapsar_model.predict(form_data)[0]),
+                "Wagholi": int(wagholi_model.predict(form_data)[0]),
+                "Wakad": int(wakad_model.predict(form_data)[0])
+            }
+
+            # Return predicted prices in JSON format
+            return jsonify(prices)
+        else:
+            return jsonify({"error": "No data provided"}), 400
+    else:
+        return jsonify({"error": "Invalid request method"}), 405
+
+
+@pricepulse.route('/all-prices')
+def all_prices():
+    if request.method == 'POST':
+        data = request.json
+
+        current_area = data["area_name"]
+        email = data["email"]
+
+        if data:
+            form_data = {
+                'Unfurnished': int(((data['furniture'])[4])),
+                'Semi-Furnished': int(((data['furniture'])[2])),
+                'Furnished': int(((data['furniture'])[0])),
+                'Area_sqft': int(data['SquareFeet']),
+                'BHK': int(data['Bedrooms']),
+            }
+
+            price_buy = 0
+            cwd = os.getcwd()
+            csv_path = os.path.join(cwd, "PIH_Pune_Price_Pulse", "Data", "test_buy.csv")
+            with open(csv_path, 'w', newline='') as csvfile:
+
+                fieldnames = form_data.keys()
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                writer.writeheader()
+
+                writer.writerow(form_data)
+            test = pd.read_csv(csv_path)
+
+            prices_buy = [
+
+                {
+                    "Hinjewadi": calc_buy_val(int((hinjewadi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((hinjewadi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Kharadi": calc_buy_val(int((kharadi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((kharadi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Baner": calc_buy_val(int((baner_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((baner_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Hadapsar": calc_buy_val(int((hadapsar_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((hadapsar_purchase.predict(test))[0]))
+                },
+                {
+                    "Wagholi": calc_buy_val(int((wagholi_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((wagholi_purchase.predict(test))[0]))
+                },
+
+                {
+                    "Wakad": calc_buy_val(int((wakad_purchase.predict(test))[0])),
+                    "post_fix": calc_post_fix(int((wakad_purchase.predict(test))[0]))
+                }
+            ]
+
+            return {"prices" : prices_buy}
+
+
 
 def calc_post_fix(value):
     post_fix = "Lakhs"
