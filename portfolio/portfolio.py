@@ -25,4 +25,4 @@ def scalp_smart():
 @portfolio.route('/download')
 def download_resume():
     cwd = os.getcwd()
-    return send_from_directory(f'{cwd}/portfolio/static/resume', 'Amey Kulkarni - Resume.pdf')
+    return send_from_directory(f'{cwd}/portfolio/static/resume', 'Amey_Kulkarni_Resume.pdf')
