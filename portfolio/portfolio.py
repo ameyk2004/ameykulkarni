@@ -22,7 +22,7 @@ def projects():
 def scalp_smart():
     return render_template('scalpsmart.html')
 
-@portfolio.route('/download')
+@portfolio.route('/cv')
 def download_resume():
     cwd = os.getcwd()
     return send_from_directory(f'{cwd}/portfolio/static/resume', 'Amey_Kulkarni_Resume.pdf')
