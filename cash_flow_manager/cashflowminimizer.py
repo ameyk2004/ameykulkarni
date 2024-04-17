@@ -69,7 +69,7 @@ def getminFlow():
         print(transactions)
         # output_data = [(item[0], item[1], item[2]) for item in transactions]
         result = cash_flow_minimizer(transactions)
-        result_tuples = [(item.split()[0], item.split()[-1], int(item.split()[2])) for item in result]
+        result_tuples = [(item.split()[0], item.split()[-1], float(item.split()[2])) for item in result]  # Convert amount to float
         print(result_tuples)
         image_path = generate_graph_image(result_tuples)
 
