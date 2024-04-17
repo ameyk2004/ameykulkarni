@@ -3,6 +3,7 @@ from cash_flow_manager.transaction_minimizer import cash_flow_minimizer
 import networkx as nx
 import matplotlib
 import matplotlib.pyplot as plt
+import base64
 matplotlib.use('Agg')
 import os
 
@@ -70,8 +71,20 @@ def getminFlow():
         result = cash_flow_minimizer(transactions)
         result_tuples = [(item.split()[0], item.split()[-1], int(item.split()[2])) for item in result]
         print(result_tuples)
-        generate_graph_image(result_tuples)
-        print({'result' : result})
+        image_path = generate_graph_image(result_tuples)
 
 
-    return {'result' : result}
+        with open(image_path, "rb") as img_file:
+            image_data = img_file.read()
+            base64_encoded_image = base64.b64encode(image_data).decode('utf-8')
+
+        # Prepare JSON response
+        response_data = {
+            'result': result,
+            'image_base64': base64_encoded_image
+        }
+
+
+
+    print(response_data)
+    return jsonify(response_data)
