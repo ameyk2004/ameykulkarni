@@ -74,10 +74,16 @@ function displayResult(resultData) {
         // Append the list item to the unordered list
         resultList.appendChild(listItem);
     });
+
+  const imageDiv = document.getElementById('graph-image');
+  imageDiv.innerHTML = `<img src="https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/static/graph.png alt="Graph">`;
+
+
+
 }
 
 function sendTransactionsToServer(transactions) {
-    fetch('https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/min-flow', {
+    fetch('"https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/min-flow', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
