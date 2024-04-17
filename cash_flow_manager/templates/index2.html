@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Cash-Flow-Minimizer</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Cash Flow Minimizer</h1>
-        <div id="graph-image">
-
-    </div>
-        <div class="input-wrapper">
-            <input id="number-of-persons" placeholder="Enter the number here" type="number">
-            <button id="submit">Submit</button>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Cash Flow Minimizer</h1> <!-- Added heading and centered -->
+    <div class="row justify-content-center mb-3"> <!-- Centered row -->
+        <div class="col-md-6"> <!-- Medium-sized column -->
+            <input type="number" id="matrix-size" class="form-control form-control-lg mb-3" placeholder="Enter matrix size"> <!-- Larger input field -->
         </div>
-
-        <table class="my-matrix"></table>
-      <div class="result">
-            <h2>Result:</h2>
-            <ul id="result-list"></ul> <!-- Placeholder for displaying the result -->
+        <div class="col-md-2"> <!-- Medium-sized column -->
+            <button id="submit" class="btn btn-primary btn-lg btn-block">Submit</button> <!-- Submit button -->
         </div>
     </div>
+    <div id="graph-image" class="img-fluid mb-3">
+        <!-- Content or image for the graph will be here -->
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-matrix">
+            <!-- Matrix table will be generated here -->
+        </table>
+    </div>
+    <div class="result">
+        <h2>Result:</h2>
+        <ul id="result-list"></ul> <!-- Placeholder for displaying the result -->
+    </div>
+</div>
 
-    <script src="./static/js/next.js"></script>
+<script src="./static/js/next.js"></script>
 </body>
 </html>
-

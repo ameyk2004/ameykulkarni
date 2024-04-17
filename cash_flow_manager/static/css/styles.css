@@ -18,6 +18,7 @@ body {
 
 h1 {
     text-align: center;
+     font-weight: bold;
     color: #333; /* Dark gray color for heading */
 }
 
@@ -34,7 +35,7 @@ input[type="number"] {
     border-radius: 5px;
     font-size: 16px;
     margin-right: 10px;
-    width: 150px; /* Adjusted width for responsiveness */
+    width: 200px; /* Adjusted width for responsiveness */
 }
 
 button#submit {
@@ -72,20 +73,6 @@ button#submit:hover {
     color: white;
 }
 
-/* Responsive adjustments */
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 100%; /* Full width on smaller screens */
-        padding: 10px;
-    }
-
-    input[type="number"] {
-        width: 100%; /* Full width input on smaller screens */
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-}
-
 .result {
     margin-top: 20px;
 }
@@ -106,6 +93,7 @@ button#submit:hover {
     border-radius: 4px;
     background-color: #f0f0f0;
 }
+
 .graph-container {
     width: 100%; /* Ensure it takes full width */
     max-width: 100%; /* Ensure it doesn't exceed the width of its container */
@@ -115,18 +103,30 @@ button#submit:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
     border-radius: 10px; /* Add rounded corners */
     overflow: hidden; /* Hide overflow content */
+    border: 1px solid #ccc; /* Add border */
 }
 
-/* Optional: Add additional styling */
 .graph-container img {
     max-width: 100%; /* Ensure the image fits inside the container */
     height: auto; /* Automatically adjust height based on width */
     display: block; /* Ensure the image is treated as a block element */
     margin: 0 auto; /* Center the image horizontally */
+    border-radius: 10px; /* Add rounded corners to the image */
 }
 
 /* Media query for smaller screens */
 @media only screen and (max-width: 768px) {
+    .container {
+        width: 100%; /* Full width on smaller screens */
+        padding: 10px;
+    }
+
+    input[type="number"] {
+        width: 100%; /* Full width input on smaller screens */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
     .graph-container {
         padding: 10px; /* Reduce padding for smaller screens */
         border-radius: 5px; /* Reduce border radius for smaller screens */

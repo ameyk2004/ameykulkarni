@@ -1,56 +1,61 @@
-var element = document.getElementById("number-of-persons");
+document.getElementById('matrix-size').addEventListener('input', function() {
+        var inputValue = parseInt(this.value);
+        var table = document.querySelector('.table-matrix');
+        table.innerHTML = '';
 
-element.addEventListener('input', () => {
-    var inputValue = element.value;
-    var table = document.querySelector('.my-matrix');
-    table.innerHTML = '';
+        var transactions = []; // Array to store the transactions
 
-    var transactions = []; // Array to store the transactions
+        for (var i = 0; i < inputValue; i++) {
+            var newRow = document.createElement('tr');
+            newRow.classList.add('display-row');
 
-    for (var i = 0; i < inputValue; i++) {
-        var newRow = document.createElement('tr');
-        newRow.classList.add('display-row');
+            var th = document.createElement('th');
+            th.classList.add('person-name');
 
-        var th = document.createElement('th');
-        th.classList.add('person-name');
+            var personLabel = String.fromCharCode('A'.charCodeAt(0) + i);
+            th.innerHTML = 'Person ' + personLabel + ' pays:';
+            newRow.appendChild(th);
 
-        var personLabel = String.fromCharCode('A'.charCodeAt(0) + i);
-        th.innerHTML = 'Person ' + personLabel + ' pays:';
-        newRow.appendChild(th);
+            for (var j = 0; j < inputValue; j++) {
+                var td = document.createElement('td');
+                td.classList.add('input-weight');
+                var input = document.createElement('input');
+                input.setAttribute('class', 'form-control input-value'); // Updated class name
+                input.setAttribute('placeholder', 'Enter value here');
+                input.setAttribute('type', 'number');
 
-        for (var j = 0; j < inputValue; j++) {
-            var td = document.createElement('td');
-            td.classList.add('input-weight');
-            var input = document.createElement('input');
-            input.setAttribute('class', 'edge-weight');
-            input.setAttribute('placeholder', 'Enter value here');
-            input.setAttribute('type', 'number');
-            td.appendChild(input);
-            newRow.appendChild(td);
+                if (input.value === '') {
+                         input.value = '0';
+                }
 
-            (function(rowIndex, colIndex) {
-                input.addEventListener('input', function() {
-                    transactions[rowIndex * inputValue + colIndex].amount = parseInt(this.value);
-                });
-            })(i, j);
+                td.appendChild(input);
+                newRow.appendChild(td);
 
-            var transaction = {
-                payer: personLabel,
-                payee: String.fromCharCode('A'.charCodeAt(0) + j),
-                amount: 0 // Default amount
-            };
-            transactions.push(transaction);
+                (function(rowIndex, colIndex) {
+                    input.addEventListener('input', function() {
+                        transactions[rowIndex * inputValue + colIndex].amount = parseInt(this.value);
+                    });
+                })(i, j);
+
+                var transaction = {
+                    payer: personLabel,
+                    payee: String.fromCharCode('A'.charCodeAt(0) + j),
+                    amount: 0 // Default amount
+                };
+                transactions.push(transaction);
+            }
+
+            table.appendChild(newRow);
         }
 
-        table.appendChild(newRow);
-    }
-
-    var submitButton = document.getElementById('submit');
-    submitButton.addEventListener('click', function() {
-        displayTransactions(transactions);
-        sendTransactionsToServer(transactions);
+        var submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', function() {
+             displayTransactions(transactions);
+             sendTransactionsToServer(transactions);
+            console.log(transactions); // For testing
+        });
     });
-});
+
 
 function displayTransactions(transactions) {
     console.log({"transactions": transactions});
@@ -76,7 +81,8 @@ function displayResult(resultData) {
     });
 
   const imageDiv = document.getElementById('graph-image');
-  imageDiv.innerHTML = `<img src="https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/static/graph.png">`;
+  imageDiv.innerHTML = `<img src="https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/static/graph.png" style="max-width: 100%; height: auto;">`;
+
 
 
 
