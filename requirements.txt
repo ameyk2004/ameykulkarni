@@ -4,3 +4,5 @@ pandas
 scikit-learn
 textblob
 gunicorn==21.2.0
+networkx
+matplotlib
