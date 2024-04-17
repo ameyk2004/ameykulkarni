@@ -76,7 +76,7 @@ function displayResult(resultData) {
     });
 
   const imageDiv = document.getElementById('graph-image');
-  imageDiv.innerHTML = `<img src="https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/static/graph.png alt="Graph">`;
+  imageDiv.innerHTML = `<img src="https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/static/graph.png">`;
 
 
 
