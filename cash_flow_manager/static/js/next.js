@@ -83,7 +83,7 @@ function displayResult(resultData) {
 }
 
 function sendTransactionsToServer(transactions) {
-    fetch('"https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/min-flow', {
+    fetch('https://ameykulkarni.onrender.com/projects/cash-flow-minimizer/min-flow', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
