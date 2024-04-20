@@ -18,6 +18,7 @@ def add_transaction(graph, payer, payee, amount):
     graph.add_edge(payer, payee, amount)
 
 def cash_flow_minimizer(transactions):
+    print(f"Transactions : {transactions}")
     balances = {}
     for transaction in transactions:
         payer, payee, amount = transaction
@@ -26,6 +27,7 @@ def cash_flow_minimizer(transactions):
 
     balances_array = [(person, balance) for person, balance in balances.items()]   #So, after this line executes, balances_array contains a list of tuples where each tuple consists of a person and their corresponding balance.
     balances_array.sort(key=lambda x: x[1]) #sorting according to second value
+
 
     transactions_list = []
 
@@ -36,6 +38,7 @@ def cash_flow_minimizer(transactions):
         min_transaction = round(min(-debtor_balance, creditor_balance), 2)
 
         transactions_list.append(f"{debtor} pays {min_transaction} to {creditor}")
+        print(f"{debtor} pays {min_transaction} to {creditor}")
 
         debtor_balance += min_transaction
         creditor_balance -= min_transaction

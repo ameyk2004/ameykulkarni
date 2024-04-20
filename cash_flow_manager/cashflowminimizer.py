@@ -84,7 +84,5 @@ def getminFlow():
             'image_base64': base64_encoded_image
         }
 
-
-
     print(response_data)
     return jsonify(response_data)
